@@ -51,4 +51,21 @@ class CustomerModel extends CI_Model {
         );
         $this->db->insert('tbl_measurement',$arrayDates);
     }
+    
+    public function editMeasurement($idMea)
+    {
+        $query = $this->db->query("SELECT * FROM tbl_measurement m WHERE m.Id_Measurement = $idMea");
+        return $query->result();
+    }
+    
+    public function updateMeasurement($txtIdMeasurement,$txtIdCustomer,$txtWeight,$txtHeight,$txtDate){
+        $array = array(
+            'tbl_Customer_id_Customer' => $txtIdCustomer,
+            'Weight' => $txtWeight,
+            'Height' => $txtHeight,
+            'Date' => $txtDate
+        );
+        $this->db->where('Id_Measurement',$txtIdMeasurement);
+        $this->db->update('tbl_measurement', $array);
+    }
 }

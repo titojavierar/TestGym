@@ -33,7 +33,7 @@ print_r($idCustomer)
                     <td><?php echo $value->Date; ?></td>
                     <td> 
                         <center>
-                            <a href="#">Edit</a>
+                            <a href="<?php echo base_url('CustomerController/editMeasurement')."/".$value->Id_Measurement; ?>">Edit</a>
                             <!--<a> | </a>
                             <a href="<?php echo base_url('ExerciseController/delete')."/".$value->Id_Exercise; ?>">Delete</a>
                             <span class="glyphicon glyphicon-transh" aria-hidden="true"></span>-->

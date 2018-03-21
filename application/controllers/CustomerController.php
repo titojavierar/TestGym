@@ -86,4 +86,28 @@ class CustomerController extends CI_Controller{
                 }
             }
         }
+        
+        public function editMeasurement($idMea = NULL){
+            if ($idMea != NULL) {
+                $data['content']='customer/editMeasurement';
+                $data['datesCustomerMea']= $this->CustomerModel->editMeasurement($idMea);
+                $this->load->view('template', $data);
+            } else {
+                redirect('CustomerController/index');
+            }
+         }
+         
+         public function updateMeasurement(){
+            $dates = $this->input->post();
+            
+            if (isset($dates)) {
+                $txtIdMeasurement = $dates['txtIdMeasurement'];
+                $txtIdCustomer = $dates['txtIdCustomer'];
+                $txtWeight = $dates['txtWeight'];
+                $txtHeight = $dates['txtHeight'];
+                $txtDate = $dates['txtDate'];
+                $this->CustomerModel->updateMeasurement($txtIdMeasurement,$txtIdCustomer,$txtWeight,$txtHeight,$txtDate);
+                redirect('CustomerController/index');
+            }
+        }
 }
